@@ -11,7 +11,7 @@ module Mobile
     include Validation
     
     # This is the version of the API that we will use
-    API_VERSION = '1.03'
+    API_VERSION = '1.07'
 
     def initialize(params = {})
       params = {
@@ -134,6 +134,9 @@ module Mobile
       :invalid_display? => 502,
       :invalid_mwi?     => 503,
       :invalid_coding?  => 504,
+      :missing_argument?   => 505,
+      :malformed_xml?   => 506,
+      :argument_too_large? => 507
     }
     
     @@status_messages = {
@@ -149,7 +152,10 @@ module Mobile
       501 => "Invalid target MSISDN",
       502 => "Invalid display type",
       503 => "Invalid MWI",
-      504 => "Invalid coding"
+      504 => "Invalid coding",
+      505 => "Empty value given in required argument",
+      506 => "Badly formed XML in SOAP request",
+      507 => "Argument given too large"
     }
     
     def initialize(code)
